@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-app id="sandbox"><!-- 盒子模型容器 -->
+      <navigate-bar /><!-- 左侧导航栏 -->
+      <top-bar /> <!-- 顶部应用栏 -->
+      <v-main><!-- 内容主容器 -->
+        <v-container fluid>
+          <router-view />
+        </v-container>
+      </v-main>
+      <control-bar /><!-- 底部控制栏 -->
+    </v-app>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import controlBar from "@/components/ControlBar";
+import navigateBar from "@/components/NavigateBar";
+import topBar from "@/components/TopBar";
 export default {
-  name: 'App',
+  name: "app",
+  data: () => ({}),
   components: {
-    HelloWorld
+    "control-bar": controlBar,
+    "navigate-bar": navigateBar,
+    "top-bar": topBar
+  },
+  methods: {
   }
-}
+};
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
